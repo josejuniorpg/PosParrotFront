@@ -3,5 +3,18 @@
 import { createTheme } from '@mantine/core';
 
 export const theme = createTheme({
-  /* Put your mantine theme override here */
+    colors: {
+        deepRed: [
+            "#47465e",
+            "#ffcfce",
+            "#ff9c9b",
+            "#ff6764",
+            "#ff3a36",
+            "#ff1d18",
+            "#ff0908",
+            "#e40000",
+            "#cc0000",
+            "#b20000"
+        ]
+    }
 });
