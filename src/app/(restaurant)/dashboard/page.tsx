@@ -1,9 +1,11 @@
-import EmployeeAuthGuard from "@/src/components/shared/EmployeeAuthGuard";
+'use client';
+import Dashboard from '@/src/components/pages/dashboard';
+import EmployeeAuthGuard from '@/src/components/shared/EmployeeAuthGuard';
 
 export default function DashboardPage() {
-    return (
-        <EmployeeAuthGuard>
-            <h1>Dashboard</h1>
-        </EmployeeAuthGuard>
-    );
+  return (
+    <EmployeeAuthGuard>
+      <Dashboard />
+    </EmployeeAuthGuard>
+  );
 }

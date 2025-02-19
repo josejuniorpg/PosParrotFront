@@ -35,10 +35,10 @@ export default function SelectRestaurant() {
 
   return (
     <>
-      <Text size="xl" fw={700} pt={100} c={'deepRed.0'} ta={'center'}>
+      <Text size="xl" fw={700} pt={100} c="deepGray.9" ta="center">
         Seleccione un restaurante
       </Text>
-      <Group mt={20} align={'center'} justify={'center'}>
+      <Group mt={20} align="center" justify="center">
         {error && <Notification color="red">{error}</Notification>}
         {restaurants.length > 0 ? (
           restaurants.map((restaurant: any) => (

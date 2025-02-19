@@ -34,10 +34,10 @@ export default function EmployeeLogin() {
         <Box w="70vw">
           <div className={classes.wrapper}>
             <div className={classes.body}>
-              <Title className={classes.title} c={'deepRed.0'}>
+              <Title className={classes.title} c="deepGray.9">
                 Bienvenido a Parrot
               </Title>
-              <Text fw={500} fz="lg" mb={5} c={'deepRed.0'}>
+              <Text fw={500} fz="lg" mb={5} c="deepGray.9">
                 Inicia sesión con tu email corporativo
               </Text>
               <Text fz="sm" c="dimmed">
@@ -53,7 +53,7 @@ export default function EmployeeLogin() {
                   onChange={(e) => setEmail(e.currentTarget.value)}
                 />
                 {error && <Notification color="red">{error}</Notification>}
-                <Button onClick={handleSubmit} color={'deepRed.6'}>Verificar Email</Button>
+                <Button onClick={handleSubmit} color="deepRed.6">Verificar Email</Button>
               </Group>
             </div>
             <Image src="/images/login-bg.webp" className={classes.image} />
