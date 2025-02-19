@@ -1,6 +1,6 @@
 import { ReactNode, useEffect, useState } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
-import { LoadingOverlay, Box } from '@mantine/core';
+import { Box, LoadingOverlay } from '@mantine/core';
 
 export default function PrivateRoute({ children }: { children: ReactNode }) {
   const router = useRouter();
@@ -22,9 +22,13 @@ export default function PrivateRoute({ children }: { children: ReactNode }) {
 
   if (loading) {
     return (
-        <Box pos="relative" style={{ minHeight: '100vh' }}>
-          <LoadingOverlay visible overlayProps={{ radius: "sm", blur: 2 }} />
-        </Box>
+      <Box pos="relative" style={{ minHeight: '100vh' }}>
+        <LoadingOverlay
+          visible
+          overlayProps={{ radius: 'sm', blur: 2 }}
+          loaderProps={{ color: 'deepRed.4', type: 'bars' }}
+        />
+      </Box>
     );
   }
 

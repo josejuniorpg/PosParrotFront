@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import axios from 'axios';
-import { Badge, Button, Card, Group, Image, Notification, Stack, Text } from '@mantine/core';
+import { Badge, Button, Card, Group, Image, Notification, Text } from '@mantine/core';
 
 export default function SelectRestaurant() {
   const [restaurants, setRestaurants] = useState<any[]>([]);
