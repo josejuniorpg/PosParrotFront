@@ -21,9 +21,11 @@
   },
   "dependencies": {
     "@mantine/core": "7.17.0",
+    "@mantine/form": "^7.17.0",
     "@mantine/hooks": "7.17.0",
     "@next/bundle-analyzer": "^15.1.5",
     "@tabler/icons-react": "^3.28.1",
+    "axios": "^1.7.9",
     "next": "15.1.5",
     "react": "19.0.0",
     "react-dom": "19.0.0"

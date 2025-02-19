@@ -1,0 +1,23 @@
+.wrapper {
+    min-height: 900px;
+    background-size: cover;
+    background-image: url('/images/login-bg.webp');
+}
+
+.form {
+    border-right: 1px solid light-dark(var(--mantine-color-gray-3), var(--mantine-color-dark-7));
+    min-height: 900px;
+    max-width: 450px;
+    padding-top: 80px;
+
+    @media (max-width: $mantine-breakpoint-sm) {
+        max-width: 100%;
+    }
+}
+
+.title {
+    color: var(--mantine-color-deepRed-0);
+    font-family:
+            Greycliff CF,
+            var(--mantine-font-family);
+}
