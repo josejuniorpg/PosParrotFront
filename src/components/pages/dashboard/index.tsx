@@ -4,8 +4,20 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import Cart from 'components/pages/dashboard/Cart';
 import ProductCard from 'components/pages/dashboard/ProductCard';
-import { Box, Center, Divider, Group, Loader, Paper, SimpleGrid, Text, Title } from '@mantine/core';
+import {
+  Box,
+  Button,
+  Center,
+  Divider,
+  Group,
+  Loader,
+  Paper,
+  SimpleGrid,
+  Text,
+  Title,
+} from '@mantine/core';
 import { CartProvider } from '@/src/context/CartContext';
+import Cookies from "js-cookie";
 
 export default function Dashboard() {
   const [products, setProducts] = useState<any[]>([]);
@@ -59,11 +71,23 @@ export default function Dashboard() {
 
   return (
     <CartProvider>
-      {' '}
       <Box h="100vh" pt={100}>
         <Group justify="space-evenly" align="flex-start">
           <Paper shadow="xs" p="xl" w="60vw">
-            <Title c="deepGray.9">Productos</Title>
+            <Group justify="space-between">
+              <Title c="deepGray.9">Productos</Title>
+
+              <Button
+                color="deepRed.9"
+                variant="outline"
+                onClick={() => {
+                  Cookies.remove("employee_email");
+                  window.location.href = '/select-restaurant';
+                }}
+              >
+                Cerrar Sesión de Email
+              </Button>
+            </Group>
             <Divider mt={5} color="deepRed.4" />
             <Text>
               Selecciona los productos que deseas añadir al carrito. Puedes ver los productos que

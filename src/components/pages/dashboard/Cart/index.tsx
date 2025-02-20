@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import Link from 'next/link';
 import { IconAlertCircle, IconCheck } from '@tabler/icons-react';
 import axios from 'axios';
 import {
@@ -173,9 +174,17 @@ export default function Cart() {
           <Progress value={progress} animated mt="sm" />
         </>
       )}
-      <Text size="lg" c="deepGray.9" fw={700}>
-        🍽️ ORDEN
-      </Text>
+      <Group justify="space-between" align="center">
+        <Text size="lg" c="deepGray.9" fw={700}>
+          🍽️ ORDEN
+        </Text>
+        <Link href="/daily-report/products/" style={{ textDecoration: 'none' }}>
+          <Text tt="uppercase" size="lg" c="deepRed.9" fw={700}>
+            Reporte Diario
+          </Text>
+        </Link>
+      </Group>
+
       <Select
         data={employees}
         placeholder="Seleccionar empleado"

@@ -5,6 +5,7 @@ import axios from 'axios';
 import { DonutChart, DonutChartProps } from '@mantine/charts';
 import { Button, Center, Group, Paper, Table, Text } from '@mantine/core';
 import { DatePickerInput } from '@mantine/dates';
+import EmployeeAuthGuard from '@/src/components/shared/EmployeeAuthGuard';
 
 type ReportProduct = {
   name: string;
@@ -48,72 +49,75 @@ export default function DailyReport() {
   }, []);
 
   return (
-    <Paper shadow="sm" p={50} pt={100} radius="md">
-      <Text size="lg" fw={700} fz={30} c="deepGray.9">
-        Reporte Diario de Ventas - {report?.creation_report_date || 'Cargando...'}
-      </Text>
+    <EmployeeAuthGuard>
+      {' '}
+      <Paper shadow="sm" p={50} pt={100} radius="md">
+        <Text size="lg" fw={700} fz={30} c="deepGray.9">
+          Reporte Diario de Ventas - {report?.creation_report_date || 'Cargando...'}
+        </Text>
 
-      <Group justify="center" align="flex-end" mt="md">
-        <DatePickerInput value={startDate} onChange={setStartDate} label="Fecha de inicio" />
-        <DatePickerInput value={endDate} onChange={setEndDate} label="Fecha de fin" />
-        <Button color="deepGray.9" onClick={fetchReport}>
-          Consultar
-        </Button>
-      </Group>
+        <Group justify="center" align="flex-end" mt="md">
+          <DatePickerInput value={startDate} onChange={setStartDate} label="Fecha de inicio" />
+          <DatePickerInput value={endDate} onChange={setEndDate} label="Fecha de fin" />
+          <Button color="deepGray.9" onClick={fetchReport}>
+            Consultar
+          </Button>
+        </Group>
 
-      {report && (
-        <>
-          <Center mt="md">
-            <DonutChart
-              data={report.products.map((item, index): DonutChartProps['data'][number] => ({
-                name: item.name,
-                value: item.quantity_sold,
-                color: getRandomColor(index),
-              }))}
-              withTooltip
-              size={200}
-              strokeWidth={2}
-              withLabels
-              chartLabel="Productos Vendidos"
-            />
-          </Center>
+        {report && (
+          <>
+            <Center mt="md">
+              <DonutChart
+                data={report.products.map((item, index): DonutChartProps['data'][number] => ({
+                  name: item.name,
+                  value: item.quantity_sold,
+                  color: getRandomColor(index),
+                }))}
+                withTooltip
+                size={200}
+                strokeWidth={2}
+                withLabels
+                chartLabel="Productos Vendidos"
+              />
+            </Center>
 
-          <Text mt="md" size="lg" fw={700} fz={30} c="deepGray.9" ta="center">
-            Total General: ${report.total_revenue.toFixed(2)}
-          </Text>
+            <Text mt="md" size="lg" fw={700} fz={30} c="deepGray.9" ta="center">
+              Total General: ${report.total_revenue.toFixed(2)}
+            </Text>
 
-          <Table verticalSpacing="sm" striped highlightOnHover mt="md">
-            <Table.Thead>
-              <Table.Tr>
-                <Table.Th>
-                  <Text fw={700} c="deepRed.9">
-                    Producto
-                  </Text>
-                </Table.Th>
-                <Table.Th>
-                  <Text fw={700} c="deepRed.9">
-                    Cantidad
-                  </Text>
-                </Table.Th>
-                <Table.Th>
-                  <Text fw={700} c="deepRed.9">
-                    Total
-                  </Text>
-                </Table.Th>
-              </Table.Tr>
-            </Table.Thead>
-            <Table.Tbody>
-              {report.products.map((item) => (
-                <Table.Tr key={item.name}>
-                  <Table.Td>{item.name}</Table.Td>
-                  <Table.Td>{item.quantity_sold}</Table.Td>
-                  <Table.Td>${item.total_revenue.toFixed(2)}</Table.Td>
+            <Table verticalSpacing="sm" striped highlightOnHover mt="md">
+              <Table.Thead>
+                <Table.Tr>
+                  <Table.Th>
+                    <Text fw={700} c="deepRed.9">
+                      Producto
+                    </Text>
+                  </Table.Th>
+                  <Table.Th>
+                    <Text fw={700} c="deepRed.9">
+                      Cantidad
+                    </Text>
+                  </Table.Th>
+                  <Table.Th>
+                    <Text fw={700} c="deepRed.9">
+                      Total
+                    </Text>
+                  </Table.Th>
                 </Table.Tr>
-              ))}
-            </Table.Tbody>
-          </Table>
-        </>
-      )}
-    </Paper>
+              </Table.Thead>
+              <Table.Tbody>
+                {report.products.map((item) => (
+                  <Table.Tr key={item.name}>
+                    <Table.Td>{item.name}</Table.Td>
+                    <Table.Td>{item.quantity_sold}</Table.Td>
+                    <Table.Td>${item.total_revenue.toFixed(2)}</Table.Td>
+                  </Table.Tr>
+                ))}
+              </Table.Tbody>
+            </Table>
+          </>
+        )}
+      </Paper>
+    </EmployeeAuthGuard>
   );
 }
