@@ -10,7 +10,7 @@ import {
   Center,
   Divider,
   Group,
-  Loader,
+  Loader, LoadingOverlay,
   Paper,
   SimpleGrid,
   Text,
@@ -55,9 +55,12 @@ export default function Dashboard() {
 
   if (loading) {
     return (
-      <Center>
-        <Loader size="lg" />
-      </Center>
+        <LoadingOverlay
+            visible={loading}
+            zIndex={1000}
+            overlayProps={{ radius: 'sm', blur: 2 }}
+            loaderProps={{ color: 'deepRed.6', type: 'bars' }}
+        />
     );
   }
 
