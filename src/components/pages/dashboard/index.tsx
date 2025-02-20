@@ -23,6 +23,7 @@ export default function Dashboard() {
         }
 
         const { data } = await axios.get(`http://localhost:8000/api/products/`, {
+          params: { restaurant: restaurantId },
           headers: {
             Authorization: `Bearer ${token}`,
             'Content-Type': 'application/json',
@@ -65,7 +66,8 @@ export default function Dashboard() {
             <Title c="deepGray.9">Productos</Title>
             <Divider mt={5} color="deepRed.4" />
             <Text>
-                Selecciona los productos que deseas añadir al carrito. Puedes ver los productos que has añadido al carrito en la sección de la derecha.
+              Selecciona los productos que deseas añadir al carrito. Puedes ver los productos que
+              has añadido al carrito en la sección de la derecha.
             </Text>
 
             <SimpleGrid cols={4} mt={30}>
