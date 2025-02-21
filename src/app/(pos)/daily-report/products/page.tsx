@@ -82,7 +82,7 @@ export default function DailyReport() {
             </Center>
 
             <Text mt="md" size="lg" fw={700} fz={30} c="deepGray.9" ta="center">
-              Total General: ${report.total_revenue.toFixed(2)}
+              Total General: ${report.total_revenue}
             </Text>
 
             <Table verticalSpacing="sm" striped highlightOnHover mt="md">
