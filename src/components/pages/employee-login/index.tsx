@@ -41,7 +41,13 @@ export default function EmployeeLogin() {
                 Inicia sesión con tu email corporativo
               </Text>
               <Text fz="sm" c="dimmed">
-                Una vez inicado sesion, podras acceder al punto de venta, y el reporte diario. (Solo si eres manager).
+                Una vez inicado sesion, podras acceder al punto de venta, y el reporte diario. (Solo
+                si eres manager).
+                <br />
+                <strong>
+                  Tambien sera necesario que haya seleccionado un restaurante para poder acceder al
+                  dashboard y el reporte diario.
+                </strong>
               </Text>
 
               <Group align="center">
@@ -53,7 +59,9 @@ export default function EmployeeLogin() {
                   onChange={(e) => setEmail(e.currentTarget.value)}
                 />
                 {error && <Notification color="red">{error}</Notification>}
-                <Button onClick={handleSubmit} color="deepRed.6">Verificar Email</Button>
+                <Button onClick={handleSubmit} color="deepRed.6">
+                  Verificar Email
+                </Button>
               </Group>
             </div>
             <Image src="/images/login-bg.webp" className={classes.image} />
